@@ -3,8 +3,12 @@
 	email = pj@evertrue.com
 [alias]
 	co = checkout
+	
 	# Log display from screencast, with train tracks.
-	l = log --graph --date=short --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ad%Creset'
+	ll = log --graph --date=short --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ad%Creset'
+	
+	# Alternate log display from Scott Chacon: shows colors for decorations but no date
+	l = log --pretty=oneline --abbrev-commit --graph --decorate
 	
 	# short form status
 	s = status --short
