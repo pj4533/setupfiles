@@ -1,0 +1,27 @@
+[user]
+	name = PJ Gray
+	email = pj@evertrue.com
+[alias]
+	co = checkout
+	# Log display from screencast, with train tracks.
+	l = log --graph --date=short --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ad%Creset'
+	
+	# short form status
+	s = status --short
+	
+	# show me describe from most recent version tag
+	v = describe --match version*
+[apply]
+	whitespace = nowarn
+[core]
+	# setup textmate for commits
+	editor = mate --wait
+[color]
+	# colors from screencast
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+[help]
+	# auto run command if only one suggestion
+	autocorrect = 1
