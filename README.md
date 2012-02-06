@@ -1,26 +1,26 @@
 Git Like A Boss
 ===============
 
-1) clone the repo
+1. clone the repo
 
-git clone git@github.com:pj4533/setupfiles.git
+	git clone git@github.com:pj4533/setupfiles.git
 
-2) Install zsh
+2. Install zsh
 
-chsh -s /bin/zsh
+	chsh -s /bin/zsh
 
-3) Copy zshrc
+3. Copy zshrc
 
-cp setupfiles/zshrc.txt ~/.zshrc
+	cp setupfiles/zshrc.txt ~/.zshrc
 
-4) Copy gitconfig
+4. Copy gitconfig
 
-cp setupfiles/gitconfig.txt ~/.gitconfig
+	cp setupfiles/gitconfig.txt ~/.gitconfig
 
-5) Change name/email in ~/.gitconfig
+5. Change name/email in ~/.gitconfig
  
-mate ~/.gitconfig
+	mate ~/.gitconfig
 
-6) Restart terminal
+6. Restart terminal
 
-7) Rock out
+7. Rock out
