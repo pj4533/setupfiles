@@ -16,7 +16,7 @@
 	# show me describe from most recent version tag
 	v = describe --match version*
 	
-	c = commit -avem \":trollface: \"
+	c = commit -avem ":trollface:"
 	
 [apply]
 	whitespace = nowarn
