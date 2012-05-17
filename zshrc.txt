@@ -1,3 +1,5 @@
+alias lc="lolcommits -l"
+
 # Stuff for git
 parse_git_status () {
 unset __CURRENT_GIT_BRANCH
