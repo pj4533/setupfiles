@@ -10,13 +10,13 @@ Git Like A Boss
 
 	chsh -s /bin/zsh
 
-3. Copy zshrc
+3. Copy zshrc (or symlink)
 
-	cp setupfiles/zshrc.txt ~/.zshrc
+	cp .zshrc ~/.zshrc
 
 4. Copy gitconfig
 
-	cp setupfiles/gitconfig.txt ~/.gitconfig
+	cp .gitconfig ~/.gitconfig
 
 5. Change name/email in ~/.gitconfig
  
