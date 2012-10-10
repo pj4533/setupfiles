@@ -1,4 +1,6 @@
 alias lc="lolcommits -l"
+alias tton="ec2-start-instances i-5b631d20"
+alias ttoff="ec2-stop-instances i-5b631d20"
 
 # Stuff for git
 parse_git_status () {
