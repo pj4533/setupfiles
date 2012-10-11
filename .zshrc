@@ -2,6 +2,10 @@ alias lc="lolcommits -l"
 alias tton="ec2-start-instances i-5b631d20"
 alias ttoff="ec2-stop-instances i-5b631d20"
 
+# Colors
+autoload -U colors
+colors
+
 # Stuff for git
 parse_git_status () {
 unset __CURRENT_GIT_BRANCH
@@ -71,3 +75,4 @@ function precmd() {
     export PROMPT="%{$GREEN%}%~%{$BLACK%} ] "
 	export RPROMPT="%{$RED%}$(parse_git_status)%{$BLACK%}"
 }
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
