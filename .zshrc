@@ -2,9 +2,13 @@ alias lc="lolcommits -l"
 alias tton="ec2-start-instances i-5b631d20"
 alias ttoff="ec2-stop-instances i-5b631d20"
 
-# Colors
-autoload -U colors
-colors
+#load colors
+autoload colors && colors
+for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
+    eval $COLOR='%{$fg_no_bold[${(L)COLOR}]%}'  #wrap colours between %{ %} to avoid weird gaps in autocomplete
+    eval BOLD_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
+done
+eval RESET='$reset_color'
 
 # Stuff for git
 parse_git_status () {
@@ -57,22 +61,14 @@ if [ -n "$__CURRENT_GIT_BRANCH" ]; then
     fi
     s+=")"
  
-    printf " %s%s" "%{${fg[yellow]}%}" $s
+    printf " %s%s" $s
 fi
 
 }
 
 
-# sunburst.vim like colors for prompt
-BLACK=$'\033[0m'
-RED=$'\033[38;5;167m'
-GREEN=$'\033[38;5;71m'
-BLUE=$'\033[38;5;111m'
-YELLOW=$'\033[38;5;228m'
-ORANGE=$'\033[38;5;173m'
-
 function precmd() {
-    export PROMPT="%{$GREEN%}%~%{$BLACK%} ] "
-	export RPROMPT="%{$RED%}$(parse_git_status)%{$BLACK%}"
+    export PROMPT="%{$GREEN%}%~%{$RESET%} ] "
+	export RPROMPT="%{$RED%}$(parse_git_status)%{$RESET%}"
 }
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
