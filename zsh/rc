@@ -1,7 +1,7 @@
 
-. ~/.zsh/prompt
-. ~/.zsh/aliases
-. ~/.zsh/git
+. ~/setupfiles/zsh/prompt
+. ~/setupfiles/zsh/aliases
+. ~/setupfiles/zsh/git
 
 #load colors
 autoload colors && colors

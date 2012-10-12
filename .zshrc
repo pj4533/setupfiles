@@ -1,1 +1,1 @@
-. ~/setupfiles/.zsh/rc
+. ~/setupfiles/zsh/rc
