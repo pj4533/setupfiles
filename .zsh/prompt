@@ -1,0 +1,5 @@
+
+function precmd() {
+    export PROMPT="%{$GREEN%}%~%{$RESET%} ] "
+	export RPROMPT="%{$RED%}$(parse_git_status)%{$RESET%}"
+}
