@@ -2,3 +2,4 @@ alias lc="lolcommits -l"
 alias tton="ec2-start-instances i-5b631d20"
 alias ttoff="ec2-stop-instances i-5b631d20"
 alias gbrt=~/setupfiles/screencast_scripts/gbrt.rb
+alias wf="watch -n 600 git fetch"
