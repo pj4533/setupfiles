@@ -11,4 +11,4 @@ for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
 done
 eval RESET='$reset_color'
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin:$HOME/EverTrue/devops/evertools/prebuilt/evertools-1.0-SNAPSHOT/bin # Add RVM to PATH for scripting
