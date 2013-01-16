@@ -32,3 +32,5 @@
 [help]
 	# auto run command if only one suggestion
 	autocorrect = 1
+[push]
+	default = matching
