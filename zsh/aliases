@@ -4,3 +4,6 @@ alias ttoff="ec2-stop-instances i-5b631d20"
 alias gbrt=~/setupfiles/screencast_scripts/gbrt.rb
 alias wf="watch -n 600 git fetch --all"
 alias gc="git clean -f -d"
+alias gcb="git checkout -b"
+alias gpo="git push -u origin"
+alias pr="hub pull-request"
