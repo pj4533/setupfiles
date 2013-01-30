@@ -1,1 +1,1 @@
-command alias curlme po [TTTURLRequestFormatter cURLCommandFromURLRequest:operation.request]
+command regex curlme 's/(.+)/po [TTTURLRequestFormatter cURLCommandFromURLRequest:%1]/'
