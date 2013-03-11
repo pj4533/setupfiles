@@ -12,4 +12,4 @@ done
 eval RESET='$reset_color'
 
 export ET_SCRIPT_PATH=$HOME/EverTrue/dev/core/script
-PATH=$PATH:$HOME/.rvm/bin:$HOME/EverTrue/devops/evertools/prebuilt/evertools-1.0-SNAPSHOT/bin:/usr/local/share/npm/bin # Add RVM to PATH for scripting
+export PATH=/usr/lib/php/pear:/usr/local/bin:$PATH:$HOME/.rvm/bin:$HOME/EverTrue/devops/evertools/prebuilt/evertools-1.0-SNAPSHOT/bin:/usr/local/share/npm/bin # Add RVM to PATH for scripting
