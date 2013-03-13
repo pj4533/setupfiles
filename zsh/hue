@@ -1,0 +1,54 @@
+
+redalert() {
+  curl -X PUT -d "{\"xy\":[0.675,0.322],\"alert\":\"lselect\"}" "http://10.0.1.25/api/philipshue/groups/0/action"
+}
+
+alertme() {
+  curl -X PUT -d "{\"alert\":\"lselect\"}" "http://10.0.1.25/api/philipshue/groups/0/action"
+}
+
+stopalert() {
+  curl -X PUT -d "{\"alert\":\"none\"}" "http://10.0.1.25/api/philipshue/groups/0/action"
+}
+
+halfdim() {
+  curl -X PUT -d "{\"bri\":128}" "http://10.0.1.25/api/philipshue/groups/0/action"
+}
+
+dim() {
+  curl -X PUT -d "{\"bri\":5}" "http://10.0.1.25/api/philipshue/groups/0/action"
+}
+
+bright() {
+  curl -X PUT -d "{\"bri\":255}" "http://10.0.1.25/api/philipshue/groups/0/action"
+}
+
+yellow() {
+  curl -X PUT -d "{\"xy\":[0.5090,0.4149]}" "http://10.0.1.25/api/philipshue/groups/0/action"
+}
+
+white() {
+  curl -X PUT -d "{\"xy\":[0.4025,0.3893]}" "http://10.0.1.25/api/philipshue/groups/0/action"
+}
+
+blue() {
+  curl -X PUT -d "{\"xy\":[0.1727,0.0512]}" "http://10.0.1.25/api/philipshue/groups/0/action"
+}
+
+officeon() {
+  curl -X PUT -d "{\"on\":true,\"bri\":255}" "http://10.0.1.25/api/philipshue/lights/1/state"
+  curl -X PUT -d "{\"on\":true,\"bri\":255}" "http://10.0.1.25/api/philipshue/lights/2/state"
+}
+
+officeoff() {
+  curl -X PUT -d "{\"on\":false}" "http://10.0.1.25/api/philipshue/lights/1/state"
+  curl -X PUT -d "{\"on\":false}" "http://10.0.1.25/api/philipshue/lights/2/state"
+}
+
+office1() {
+  curl "http://10.0.1.25/api/philipshue/lights/1"
+}
+
+office2() {
+  curl "http://10.0.1.25/api/philipshue/lights/2"
+}

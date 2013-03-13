@@ -2,6 +2,7 @@
 . ~/setupfiles/zsh/prompt
 . ~/setupfiles/zsh/aliases
 . ~/setupfiles/zsh/git
+. ~/setupfiles/zsh/hue
 
 #load colors
 autoload colors && colors
