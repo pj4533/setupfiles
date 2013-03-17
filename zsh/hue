@@ -35,14 +35,24 @@ blue() {
   curl -X PUT -d "{\"xy\":[0.1727,0.0512]}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
-officeon() {
-  curl -X PUT -d "{\"on\":true,\"bri\":255}" "http://10.0.1.25/api/philipshue/lights/1/state" > /dev/null 2>&1
-  curl -X PUT -d "{\"on\":true,\"bri\":255}" "http://10.0.1.25/api/philipshue/lights/2/state" > /dev/null 2>&1
+allon() {
+  curl -X PUT -d "{\"on\":true,\"bri\":255}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
-officeoff() {
+alloff() {
+  curl -X PUT -d "{\"on\":false}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
+}
+
+deskonly() {
   curl -X PUT -d "{\"on\":false}" "http://10.0.1.25/api/philipshue/lights/1/state" > /dev/null 2>&1
   curl -X PUT -d "{\"on\":false}" "http://10.0.1.25/api/philipshue/lights/2/state" > /dev/null 2>&1
+  curl -X PUT -d "{\"on\":true}" "http://10.0.1.25/api/philipshue/lights/3/state" > /dev/null 2>&1
+}
+
+toponly() {
+  curl -X PUT -d "{\"on\":true}" "http://10.0.1.25/api/philipshue/lights/1/state" > /dev/null 2>&1
+  curl -X PUT -d "{\"on\":true}" "http://10.0.1.25/api/philipshue/lights/2/state" > /dev/null 2>&1
+  curl -X PUT -d "{\"on\":false}" "http://10.0.1.25/api/philipshue/lights/3/state" > /dev/null 2>&1
 }
 
 office1() {
@@ -51,6 +61,10 @@ office1() {
 
 office2() {
   curl "http://10.0.1.25/api/philipshue/lights/2" > /dev/null 2>&1
+}
+
+office3() {
+  curl "http://10.0.1.25/api/philipshue/lights/3" > /dev/null 2>&1
 }
 
 alertmein() {
