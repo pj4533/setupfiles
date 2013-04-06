@@ -1,70 +1,70 @@
 
 redalert() {
-  curl -X PUT -d "{\"xy\":[0.675,0.322],\"alert\":\"lselect\"}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
+  curl -X PUT -d "{\"xy\":[0.675,0.322],\"alert\":\"lselect\"}" "http://10.0.1.2/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
 alertme() {
-  curl -X PUT -d "{\"alert\":\"lselect\"}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
+  curl -X PUT -d "{\"alert\":\"lselect\"}" "http://10.0.1.2/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
 stopalert() {
-  curl -X PUT -d "{\"alert\":\"none\"}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
+  curl -X PUT -d "{\"alert\":\"none\"}" "http://10.0.1.2/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
 halfdim() {
-  curl -X PUT -d "{\"bri\":128}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
+  curl -X PUT -d "{\"bri\":128}" "http://10.0.1.2/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
 dim() {
-  curl -X PUT -d "{\"bri\":5}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
+  curl -X PUT -d "{\"bri\":5}" "http://10.0.1.2/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
 bright() {
-  curl -X PUT -d "{\"bri\":255}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
+  curl -X PUT -d "{\"bri\":255}" "http://10.0.1.2/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
 yellow() {
-  curl -X PUT -d "{\"xy\":[0.5090,0.4149]}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
+  curl -X PUT -d "{\"xy\":[0.5090,0.4149]}" "http://10.0.1.2/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
 white() {
-  curl -X PUT -d "{\"xy\":[0.4025,0.3893]}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
+  curl -X PUT -d "{\"xy\":[0.4025,0.3893]}" "http://10.0.1.2/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
 blue() {
-  curl -X PUT -d "{\"xy\":[0.1727,0.0512]}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
+  curl -X PUT -d "{\"xy\":[0.1727,0.0512]}" "http://10.0.1.2/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
 allon() {
-  curl -X PUT -d "{\"on\":true,\"bri\":255}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
+  curl -X PUT -d "{\"on\":true,\"bri\":255}" "http://10.0.1.2/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
 alloff() {
-  curl -X PUT -d "{\"on\":false}" "http://10.0.1.25/api/philipshue/groups/0/action" > /dev/null 2>&1
+  curl -X PUT -d "{\"on\":false}" "http://10.0.1.2/api/philipshue/groups/0/action" > /dev/null 2>&1
 }
 
 deskonly() {
-  curl -X PUT -d "{\"on\":false}" "http://10.0.1.25/api/philipshue/lights/1/state" > /dev/null 2>&1
-  curl -X PUT -d "{\"on\":false}" "http://10.0.1.25/api/philipshue/lights/2/state" > /dev/null 2>&1
-  curl -X PUT -d "{\"on\":true}" "http://10.0.1.25/api/philipshue/lights/3/state" > /dev/null 2>&1
+  curl -X PUT -d "{\"on\":false}" "http://10.0.1.2/api/philipshue/lights/1/state" > /dev/null 2>&1
+  curl -X PUT -d "{\"on\":false}" "http://10.0.1.2/api/philipshue/lights/2/state" > /dev/null 2>&1
+  curl -X PUT -d "{\"on\":true}" "http://10.0.1.2/api/philipshue/lights/3/state" > /dev/null 2>&1
 }
 
 toponly() {
-  curl -X PUT -d "{\"on\":true}" "http://10.0.1.25/api/philipshue/lights/1/state" > /dev/null 2>&1
-  curl -X PUT -d "{\"on\":true}" "http://10.0.1.25/api/philipshue/lights/2/state" > /dev/null 2>&1
-  curl -X PUT -d "{\"on\":false}" "http://10.0.1.25/api/philipshue/lights/3/state" > /dev/null 2>&1
+  curl -X PUT -d "{\"on\":true}" "http://10.0.1.2/api/philipshue/lights/1/state" > /dev/null 2>&1
+  curl -X PUT -d "{\"on\":true}" "http://10.0.1.2/api/philipshue/lights/2/state" > /dev/null 2>&1
+  curl -X PUT -d "{\"on\":false}" "http://10.0.1.2/api/philipshue/lights/3/state" > /dev/null 2>&1
 }
 
 office1() {
-  curl "http://10.0.1.25/api/philipshue/lights/1" > /dev/null 2>&1
+  curl "http://10.0.1.2/api/philipshue/lights/1" > /dev/null 2>&1
 }
 
 office2() {
-  curl "http://10.0.1.25/api/philipshue/lights/2" > /dev/null 2>&1
+  curl "http://10.0.1.2/api/philipshue/lights/2" > /dev/null 2>&1
 }
 
 office3() {
-  curl "http://10.0.1.25/api/philipshue/lights/3" > /dev/null 2>&1
+  curl "http://10.0.1.2/api/philipshue/lights/3" > /dev/null 2>&1
 }
 
 alertmein() {
