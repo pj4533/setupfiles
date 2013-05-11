@@ -19,7 +19,7 @@
 	c = commit -avem ":trollface:"
   
   cb = checkout -b
-	
+  	
 [apply]
 	whitespace = nowarn
 [core]
