@@ -23,8 +23,7 @@
 [apply]
 	whitespace = nowarn
 [core]
-	# setup textmate for commits
-	editor = mate --wait
+	editor = subl -w
 [color]
 	# colors from screencast
 	diff = auto
