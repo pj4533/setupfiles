@@ -10,7 +10,22 @@ alias gpom="git push origin master"
 alias gpp="git pull -p"
 alias pr="hub pull-request"
 alias cleanup="git clean -f -d"
+alias getlogs="~/setupfiles/scripts/getlogs.sh $1"
+alias tailprod1="ssh pgray@prod-api-1 \"tail -f /srv/api.evertrue.com/shared/logs/access_log\""
+alias tailprod2="ssh pgray@prod-api-2 \"tail -f /srv/api.evertrue.com/shared/logs/access_log\""
 
 grt() {
     git tag -d $1;git push origin :refs/tags/$1
+}
+
+change () {
+        from=$1 
+        shift
+        to=$1 
+        shift
+        for file in $*
+        do
+                perl -i.bak -p -e "s{$from}{$to}g;" $file
+                echo "Changing $from to $to in $file"
+        done
 }
