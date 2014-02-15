@@ -1,1 +1,3 @@
-command regex curlme 's/(.+)/po [TTTURLRequestFormatter cURLCommandFromURLRequest:%1]/'
+command regex curlmefull 's/(.+)/po [TTTURLRequestFormatter cURLCommandFromURLRequest:%1]/'
+command regex curlme 's/(.+)/po [ETURLRequestFormatter cURLCommandFromURLRequest:%1]/'
+command alias reportme po [AFNetworkingMeter sharedMeter].formattedReport
