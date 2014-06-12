@@ -17,6 +17,12 @@ alias tailprod2="ssh pgray@prod-api-2 \"tail -f /srv/api.evertrue.com/shared/log
 alias gitbranchclean="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
 alias bump="agvtool bump -all;git commit -av -m \"Bumped build number\";git push"
 
+v() {
+    marketingversion=$(agvtool mvers -terse1)
+    version=$(agvtool vers -terse)
+    echo "$marketingversion ($version)"
+}
+
 grt() {
     git tag -d $1;git push origin :refs/tags/$1
 }
