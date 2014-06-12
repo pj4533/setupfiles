@@ -18,9 +18,8 @@ alias gitbranchclean="git branch --merged | grep -v "\*" | xargs -n 1 git branch
 alias bump="agvtool bump -all;git commit -av -m \"Bumped build number\";git push"
 
 newversion() {
-    agvtool bump -all
     agvtool new-marketing-version $1
-    git commit -av -m "Set marketing version: $1 and bumped build number."
+    git commit -av -m "Set marketing version: $1"
     git push
 }
 
