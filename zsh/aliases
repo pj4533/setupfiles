@@ -16,6 +16,7 @@ alias tailprod1="ssh pgray@prod-api-1 \"tail -f /srv/api.evertrue.com/shared/log
 alias tailprod2="ssh pgray@prod-api-2 \"tail -f /srv/api.evertrue.com/shared/logs/access_log\""
 alias gitbranchclean="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
 alias bump="agvtool bump -all;git commit -av -m \"Bumped build number\";git push"
+alias archive="./GivingTree/Scripts/archive.sh"
 
 newversion() {
     agvtool new-marketing-version $1
