@@ -17,6 +17,7 @@ alias tailprod2="ssh pgray@prod-api-2 \"tail -f /srv/api.evertrue.com/shared/log
 alias gitbranchclean="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
 alias bump="agvtool bump -all;git commit -av -m \"Bumped build number\";git push"
 alias archive="./GivingTree/Scripts/archive.sh"
+alias build="./GivingTree/Scripts/build.sh"
 alias pod-dev='~/dev/CocoaPods/bin/pod'
 
 newversion() {
@@ -29,6 +30,18 @@ v() {
     marketingversion=$(agvtool mvers -terse1)
     version=$(agvtool vers -terse)
     echo "$marketingversion ($version)"
+}
+
+provbase64() {
+    security cms -D -i $1 | plutil -extract "DeveloperCertificates" "xml1" -o - - | sed -e '1,5d;7,100d' | cut -f2 | cut -c21-31
+}
+
+certbase64() {
+    openssl enc -base64 -in $1 | head -n 1 | cut -c21-31
+}
+
+certsha() {
+    openssl dgst -sha1 $1 | cut -f2 -d ' '    
 }
 
 grt() {
