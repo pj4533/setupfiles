@@ -20,6 +20,16 @@ alias archive="./GivingTree/Scripts/archive.sh"
 alias build="./GivingTree/Scripts/build.sh"
 alias pod-dev='~/dev/CocoaPods/bin/pod'
 
+appon() {
+    heroku ps:scale web=2 worker=1
+    heroku ps:resize web=2X
+}
+
+appoff() {
+    heroku ps:resize web=1X
+    heroku ps:scale web=1 worker=0
+}
+
 newversion() {
     agvtool new-marketing-version $1
     git commit -av -m "Set marketing version: $1"
@@ -30,6 +40,10 @@ v() {
     marketingversion=$(agvtool mvers -terse1)
     version=$(agvtool vers -terse)
     echo "$marketingversion ($version)"
+}
+
+css2plist() {
+    coffee ~/setupfiles/scripts/ttfcss2plist.coffee < $1 > $2
 }
 
 provbase64() {
