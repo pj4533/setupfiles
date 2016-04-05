@@ -21,6 +21,10 @@ alias archive="./GivingTree/Scripts/archive.sh"
 alias build="./GivingTree/Scripts/build.sh"
 alias pod-dev='~/dev/CocoaPods/bin/pod'
 
+pivid() {
+    nc -l 2222 | mplayer -fps 30 -cache 1024 - &> /dev/null
+}
+
 appon() {
     heroku ps:scale web=2 worker=1
     heroku ps:resize web=2X
