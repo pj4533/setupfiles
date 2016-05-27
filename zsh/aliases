@@ -25,6 +25,18 @@ pivid() {
     nc -l 2222 | mplayer -fps 30 -cache 1024 - &> /dev/null
 }
 
+deploy() {
+    docker build --build-arg BUNDLE_GEM__FURY__IO=$BUNDLE_GEM__FURY__IO -t registry.evertrue.com/evertrue/$*:$(ruby -e "puts Time.now.utc.to_i")_$(git rev-parse --short HEAD) ./
+    docker push registry.evertrue.com/evertrue/$*:$(docker images | grep everface | awk '{print $2}' | head -n 1)
+    BUILD_TAG=$(docker images | grep $* | awk '{print $2}' | head -n 1) bundle exec dinghy deploy staging
+}
+
+deployforce() {
+    docker build --build-arg BUNDLE_GEM__FURY__IO=$BUNDLE_GEM__FURY__IO -t registry.evertrue.com/evertrue/$*:$(ruby -e "puts Time.now.utc.to_i")_$(git rev-parse --short HEAD) ./
+    docker push registry.evertrue.com/evertrue/$*:$(docker images | grep everface | awk '{print $2}' | head -n 1)
+    BUILD_TAG=$(docker images | grep $* | awk '{print $2}' | head -n 1) bundle exec dinghy deploy staging -f    
+}
+
 appon() {
     heroku ps:scale web=2 worker=1
     heroku ps:resize web=2X
