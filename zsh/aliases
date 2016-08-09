@@ -20,21 +20,18 @@ alias bump="agvtool bump -all;git commit -av -m \"Bumped build number\";git push
 alias archive="./GivingTree/Scripts/archive.sh"
 alias build="./GivingTree/Scripts/build.sh"
 alias pod-dev='~/dev/CocoaPods/bin/pod'
+alias be="bundle exec"
+alias bef="bundle exec fastlane"
+alias tagsync="git tag -l | xargs git tag -d;git fetch --tags"
 
 pivid() {
     nc -l 2222 | mplayer -fps 30 -cache 1024 - &> /dev/null
 }
 
 deploy() {
-    docker build --build-arg BUNDLE_GEM__FURY__IO=$BUNDLE_GEM__FURY__IO -t registry.evertrue.com/evertrue/$*:$(ruby -e "puts Time.now.utc.to_i")_$(git rev-parse --short HEAD) ./
-    docker push registry.evertrue.com/evertrue/$*:$(docker images | grep everface | awk '{print $2}' | head -n 1)
-    BUILD_TAG=$(docker images | grep $* | awk '{print $2}' | head -n 1) bundle exec dinghy deploy staging
-}
-
-deployforce() {
-    docker build --build-arg BUNDLE_GEM__FURY__IO=$BUNDLE_GEM__FURY__IO -t registry.evertrue.com/evertrue/$*:$(ruby -e "puts Time.now.utc.to_i")_$(git rev-parse --short HEAD) ./
-    docker push registry.evertrue.com/evertrue/$*:$(docker images | grep everface | awk '{print $2}' | head -n 1)
-    BUILD_TAG=$(docker images | grep $* | awk '{print $2}' | head -n 1) bundle exec dinghy deploy staging -f    
+    docker build --build-arg BUNDLE_GEM__FURY__IO=$BUNDLE_GEM__FURY__IO -t registry.evertrue.com/evertrue/$1:$(ruby -e "puts Time.now.utc.to_i")_$(git rev-parse --short HEAD) ./
+    docker push registry.evertrue.com/evertrue/$1:$(docker images | grep everface | awk '{print $2}' | head -n 1)
+    BUILD_TAG=$(docker images | grep $1 | awk '{print $2}' | head -n 1) bundle exec dinghy deploy $2 $3
 }
 
 appon() {
