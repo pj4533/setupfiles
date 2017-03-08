@@ -23,6 +23,7 @@ alias pod-dev='~/dev/CocoaPods/bin/pod'
 alias be="bundle exec"
 alias bef="bundle exec fastlane"
 alias tagsync="git tag -l | xargs git tag -d;git fetch --tags"
+alias rdd="rm -rf ~/Library/Developer/Xcode/DerivedData"
 
 pivid() {
     nc -l 2222 | mplayer -fps 30 -cache 1024 - &> /dev/null
@@ -46,6 +47,7 @@ appoff() {
 
 newversion() {
     agvtool new-marketing-version $1
+    agvtool new-version 1
     git commit -av -m "Set marketing version: $1"
     git push
 }
@@ -74,6 +76,10 @@ certsha() {
 
 grt() {
     git tag -d $1;git push origin :refs/tags/$1
+}
+
+grb() {
+    git branch -D $1;git push origin --delete $1
 }
 
 change () {
