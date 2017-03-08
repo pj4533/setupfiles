@@ -47,7 +47,7 @@ appoff() {
 
 newversion() {
     agvtool new-marketing-version $1
-    agvtool new-version 1
+    agvtool new-version -all 1
     git commit -av -m "Set marketing version: $1"
     git push
 }
