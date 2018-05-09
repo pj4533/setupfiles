@@ -24,6 +24,8 @@ alias be="bundle exec"
 alias bef="bundle exec fastlane"
 alias tagsync="git tag -l | xargs git tag -d;git fetch --tags"
 alias rdd="rm -rf ~/Library/Developer/Xcode/DerivedData"
+alias travis="~/setupfiles/scripts/travis.sh"
+alias travisstatus="~/setupfiles/scripts/travis_status.sh"
 
 pivid() {
     nc -l 2222 | mplayer -fps 30 -cache 1024 - &> /dev/null
@@ -33,6 +35,17 @@ deploy() {
     docker build --build-arg BUNDLE_GEM__FURY__IO=$BUNDLE_GEM__FURY__IO -t registry.evertrue.com/evertrue/$1:$(ruby -e "puts Time.now.utc.to_i")_$(git rev-parse --short HEAD) ./
     docker push registry.evertrue.com/evertrue/$1:$(docker images | grep everface | awk '{print $2}' | head -n 1)
     BUILD_TAG=$(docker images | grep $1 | awk '{print $2}' | head -n 1) bundle exec dinghy deploy $2 $3
+}
+
+status() {
+    echo "ETFoundation: $(travisstatus "https://travis-ci.com/evertrue/ETFoundation.svg?token=$TRAVIS_TOKEN&branch=master")"
+    echo "ETNetworking: $(travisstatus "https://travis-ci.com/evertrue/ETNetworking.svg?token=$TRAVIS_TOKEN&branch=master")"
+    echo "ETAuthentication: $(travisstatus "https://travis-ci.com/evertrue/ETAuthentication.svg?token=$TRAVIS_TOKEN&branch=master")"
+    echo "ETSearch: $(travisstatus "https://travis-ci.com/evertrue/ETSearch.svg?token=$TRAVIS_TOKEN&branch=master")"
+    echo "ETProfile: $(travisstatus "https://travis-ci.com/evertrue/ETProfile.svg?token=$TRAVIS_TOKEN&branch=master")"
+    echo "GivingTree: $(travisstatus "https://travis-ci.com/evertrue/GivingTree.svg?token=$TRAVIS_TOKEN&branch=master")"
+    echo "Volunteers: $(travisstatus "https://travis-ci.com/evertrue/Volunteers.svg?token=$TRAVIS_TOKEN&branch=master")"
+    echo "iOS: $(travisstatus "https://travis-ci.com/evertrue/iOS.svg?token=$TRAVIS_TOKEN&branch=master")"
 }
 
 appon() {
