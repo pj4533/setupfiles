@@ -11,5 +11,8 @@ require 'open3'
       while line = stdout.gets
         print line
       end
+      while errorline = stderr.gets
+      	print errorline
+      end
     end
   end

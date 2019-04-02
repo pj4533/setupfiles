@@ -3,3 +3,4 @@ command regex curlme 's/(.+)/po [ETURLRequestFormatter cURLCommandFromURLRequest
 command alias reportme po [AFNetworkingMeter sharedMeter].formattedReport
 command script import /Users/pgray/projects/chisel/fblldb.py
 command regex jo 's/(.+)/po print(String(data: try! JSONSerialization.data(withJSONObject: %1, options: .prettyPrinted), encoding: .utf8 )!)/'
+command regex jobj 's/(.+)/po [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:%1 options:nil error:nil] encoding:nil]/'

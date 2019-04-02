@@ -31,6 +31,10 @@ pivid() {
     nc -l 2222 | mplayer -fps 30 -cache 1024 - &> /dev/null
 }
 
+dsym() {
+    mdfind "com_apple_xcode_dsym_uuids == $1"
+}
+
 deploy() {
     docker build --build-arg BUNDLE_GEM__FURY__IO=$BUNDLE_GEM__FURY__IO -t registry.evertrue.com/evertrue/$1:$(ruby -e "puts Time.now.utc.to_i")_$(git rev-parse --short HEAD) ./
     docker push registry.evertrue.com/evertrue/$1:$(docker images | grep everface | awk '{print $2}' | head -n 1)
