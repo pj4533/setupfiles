@@ -27,6 +27,13 @@ alias rdd="rm -rf ~/Library/Developer/Xcode/DerivedData"
 alias travis="~/setupfiles/scripts/travis.sh"
 alias travisstatus="~/setupfiles/scripts/travis_status.sh"
 alias gx="swift package generate-xcodeproj"
+alias cdicloud="cd \"/Users/pgray/Library/Mobile Documents/com~apple~CloudDocs/\""
+
+pnwhois() {
+    cd "/Users/pgray/Library/Mobile Documents/com~apple~CloudDocs/Poker Logs/Raw/PokerRefuge"
+    awk -F'""' '$2 ~ /@/ && ! /undefined/ {gsub(/"/, "", $2);gsub(/ @ /, ",", $2);print $2;}' * | sort -t',' -k 2 | uniq | grep $1
+    cd ~
+}
 
 pivid() {
     nc -l 2222 | mplayer -fps 30 -cache 1024 - &> /dev/null
