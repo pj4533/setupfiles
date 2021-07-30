@@ -107,6 +107,13 @@ grb() {
     git branch -D $1;git push origin --delete $1
 }
 
+addtag() {
+    VERSION=$(agvtool mvers -terse1)
+    NEWTAG="$VERSION/$1"
+    git tag -a $NEWTAG -m $NEWTAG
+    git push origin $NEWTAG
+}
+
 change () {
         from=$1 
         shift
