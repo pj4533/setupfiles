@@ -13,7 +13,6 @@ for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
 done
 eval RESET='$reset_color'
 
-launchctl setenv STATHAT_EZKEY $STATHAT_EZKEY
 export ET_SCRIPT_PATH=$HOME/EverTrue/dev/core/script
 export POD_LOCAL_HOME=~/dev
 export PATH=/Applications/Postgres.app/Contents/MacOS/bin:/usr/lib/php/pear:/usr/local/bin:$PATH:$HOME/EverTrue/devops/evertools/prebuilt/:$HOME/Library/Python/2.7/bin:evertools-1.0-SNAPSHOT/bin:/usr/local/share/npm/bin
