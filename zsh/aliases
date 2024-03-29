@@ -28,6 +28,7 @@ alias travis="~/setupfiles/scripts/travis.sh"
 alias travisstatus="~/setupfiles/scripts/travis_status.sh"
 alias gx="swift package generate-xcodeproj"
 alias cdicloud="cd \"/Users/pgray/Library/Mobile Documents/com~apple~CloudDocs/\""
+alias ghc="gh copilot suggest"
 
 pnwhois() {
     cd "/Users/pgray/Library/Mobile Documents/com~apple~CloudDocs/Poker Logs/Raw/PokerRefuge"
