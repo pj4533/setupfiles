@@ -1,75 +1,8 @@
-alias lc="lolcommits -l"
-alias tton="ec2-start-instances i-5b631d20"
-alias ttoff="ec2-stop-instances i-5b631d20"
-alias gbrt=~/setupfiles/screencast_scripts/gbrt.rb
-alias wf="watch -n 600 git fetch --all"
-alias gc="git clean -f -d"
 alias gcb="git checkout -b"
 alias gpo="git push -u origin"
-alias gpom="git push origin master"
 alias gpp="git pull -p"
-alias pr="hub pull-request"
-alias cleanup="git clean -f -d"
-alias md="/Applications/MacDown.app/Contents/SharedSupport/bin/macdown"
-alias getlogs="~/setupfiles/scripts/getlogs.sh $1"
-alias getcurrentlogs="~/setupfiles/scripts/getcurrentlogs.sh"
-alias tailprod1="ssh pgray@prod-api-1 \"tail -f /srv/api.evertrue.com/shared/logs/access_log\""
-alias tailprod2="ssh pgray@prod-api-2 \"tail -f /srv/api.evertrue.com/shared/logs/access_log\""
-alias gitbranchclean="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
-alias bump="agvtool bump -all;git commit -av -m \"Bumped build number\";git push"
-alias archive="./GivingTree/Scripts/archive.sh"
-alias build="./GivingTree/Scripts/build.sh"
-alias pod-dev='~/dev/CocoaPods/bin/pod'
-alias be="bundle exec"
-alias bef="bundle exec fastlane"
-alias tagsync="git tag -l | xargs git tag -d;git fetch --tags"
 alias rdd="rm -rf ~/Library/Developer/Xcode/DerivedData"
-alias travis="~/setupfiles/scripts/travis.sh"
-alias travisstatus="~/setupfiles/scripts/travis_status.sh"
-alias gx="swift package generate-xcodeproj"
-alias cdicloud="cd \"/Users/pgray/Library/Mobile Documents/com~apple~CloudDocs/\""
 alias ghc="gh copilot suggest"
-
-pnwhois() {
-    cd "/Users/pgray/Library/Mobile Documents/com~apple~CloudDocs/Poker Logs/Raw/PokerRefuge"
-    awk -F'""' '$2 ~ /@/ && ! /undefined/ {gsub(/"/, "", $2);gsub(/ @ /, ",", $2);print $2;}' * | sort -t',' -k 2 | uniq | grep $1
-    cd ~
-}
-
-pivid() {
-    nc -l 2222 | mplayer -fps 30 -cache 1024 - &> /dev/null
-}
-
-dsym() {
-    mdfind "com_apple_xcode_dsym_uuids == $1"
-}
-
-deploy() {
-    docker build --build-arg BUNDLE_GEM__FURY__IO=$BUNDLE_GEM__FURY__IO -t registry.evertrue.com/evertrue/$1:$(ruby -e "puts Time.now.utc.to_i")_$(git rev-parse --short HEAD) ./
-    docker push registry.evertrue.com/evertrue/$1:$(docker images | grep everface | awk '{print $2}' | head -n 1)
-    BUILD_TAG=$(docker images | grep $1 | awk '{print $2}' | head -n 1) bundle exec dinghy deploy $2 $3
-}
-
-status() {
-    echo "ETFoundation: $(travisstatus "https://travis-ci.com/evertrue/ETFoundation.svg?token=$TRAVIS_TOKEN&branch=master")"
-    echo "ETNetworking: $(travisstatus "https://travis-ci.com/evertrue/ETNetworking.svg?token=$TRAVIS_TOKEN&branch=master")"
-    echo "ETAuthentication: $(travisstatus "https://travis-ci.com/evertrue/ETAuthentication.svg?token=$TRAVIS_TOKEN&branch=master")"
-    echo "ETSearch: $(travisstatus "https://travis-ci.com/evertrue/ETSearch.svg?token=$TRAVIS_TOKEN&branch=master")"
-    echo "ETProfile: $(travisstatus "https://travis-ci.com/evertrue/ETProfile.svg?token=$TRAVIS_TOKEN&branch=master")"
-    echo "GivingTree: $(travisstatus "https://travis-ci.com/evertrue/GivingTree.svg?token=$TRAVIS_TOKEN&branch=master")"
-    echo "Volunteers: $(travisstatus "https://travis-ci.com/evertrue/Volunteers.svg?token=$TRAVIS_TOKEN&branch=master")"
-    echo "iOS: $(travisstatus "https://travis-ci.com/evertrue/iOS.svg?token=$TRAVIS_TOKEN&branch=master")"
-}
-
-appon() {
-    heroku ps:scale web=2 worker=1
-    heroku ps:resize web=2X
-}
-
-appoff() {
-    heroku ps:resize web=1X
-    heroku ps:scale web=1 worker=0
-}
 
 newversion() {
     agvtool new-marketing-version $1
@@ -82,22 +15,6 @@ v() {
     marketingversion=$(agvtool mvers -terse1)
     version=$(agvtool vers -terse)
     echo "$marketingversion ($version)"
-}
-
-css2plist() {
-    coffee ~/setupfiles/scripts/ttfcss2plist.coffee < $1 > $2
-}
-
-provbase64() {
-    security cms -D -i $1 | plutil -extract "DeveloperCertificates" "xml1" -o - - | sed -e '1,5d;7,100d' | cut -f2 | cut -c21-31
-}
-
-certbase64() {
-    openssl enc -base64 -in $1 | head -n 1 | cut -c21-31
-}
-
-certsha() {
-    openssl dgst -sha1 $1 | cut -f2 -d ' '    
 }
 
 grt() {
@@ -115,14 +32,7 @@ addtag() {
     git push origin $NEWTAG
 }
 
-change () {
-        from=$1 
-        shift
-        to=$1 
-        shift
-        for file in $*
-        do
-                perl -i.bak -p -e "s{$from}{$to}g;" $file
-                echo "Changing $from to $to in $file"
-        done
+parselog() {
+    category=$(echo "$1" | tr '[:lower:]' '[:upper:]')
+    awk "/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}/ {if (p) p=0} /\[$category\]/ {p=1} {if (p) print}" $2
 }
