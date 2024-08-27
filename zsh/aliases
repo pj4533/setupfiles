@@ -3,6 +3,7 @@ alias gpo="git push -u origin"
 alias gpp="git pull -p"
 alias rdd="rm -rf ~/Library/Developer/Xcode/DerivedData"
 alias ghc="gh copilot suggest"
+alias gc="git clean -f -d"
 
 newversion() {
     agvtool new-marketing-version $1
