@@ -20,3 +20,14 @@ unset __conda_setup
 
 
 . "$HOME/.local/bin/env"
+
+[ -f "/Users/pj4533/.ghcup/env" ] && . "/Users/pj4533/.ghcup/env" # ghcup-env
+
+# Pyenv configuration (added for Python development)
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Disable conda base auto-activation (for pyenv compatibility)
+conda config --set auto_activate_base false 2>/dev/null || true
+export PATH="$HOME/go/bin:$PATH"
